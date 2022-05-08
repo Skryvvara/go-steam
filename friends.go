@@ -18,7 +18,7 @@ type playerFriendsListJSON struct {
 	}
 }
 
-func (a SteamApi) getFriendsList(userID string) ([]SteamFriend, error) {
+func (a SteamApi) GetFriendsList(userID string) ([]SteamFriend, error) {
 	url := fmt.Sprintf("%s/ISteamUser/GetFriendList/v0001/?key=%s&steamid=%s&relationship=friend",
 		a.BaseURL,
 		a.ApiKey,
