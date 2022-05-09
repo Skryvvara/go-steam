@@ -86,16 +86,17 @@ type Response struct {
 	Data    GameDetails `json:"data"`
 }
 
-func (a SteamApi) GetGameDetails(gameID string) error {
+func (a SteamApi) GetGameDetails(gameID string) (*GameDetails, error) {
 	url := fmt.Sprintf("https://store.steampowered.com/api/appdetails?appids=%s", gameID)
 	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Println(err)
-		return err
+		return nil, err
 	}
 	defer resp.Body.Close()
 	var details map[string]Response
 	json.NewDecoder(resp.Body).Decode(&details)
-	fmt.Println(details[gameID].Data.Categories)
-	return nil
+
+	gameDetails := details[gameID].Data
+	return &gameDetails, nil
 }
