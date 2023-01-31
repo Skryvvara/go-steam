@@ -13,7 +13,7 @@ type SteamFriend struct {
 }
 
 type playerFriendsListJSON struct {
-	Friendslist *struct {
+	FriendsList *struct {
 		Friends []SteamFriend
 	}
 }
@@ -39,5 +39,5 @@ func (a SteamApiClient) GetFriendsList(userID string) ([]SteamFriend, error) {
 		return nil, err
 	}
 
-	return friends.Friendslist.Friends, nil
+	return friends.FriendsList.Friends, nil
 }
