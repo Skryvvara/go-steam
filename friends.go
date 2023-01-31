@@ -6,21 +6,10 @@ import (
 	"net/http"
 )
 
-type SteamFriend struct {
-	UserID       string `json:"steamid"`
-	Relationship string
-	FriendSince  int64 `json:"friend_since"`
-}
-
-type playerFriendsListJSON struct {
-	FriendsList *struct {
-		Friends []SteamFriend
-	}
-}
-
+// Get the friend list of a user by his ID.
 func (a SteamApiClient) GetFriendsList(userID string) ([]SteamFriend, error) {
 	url := fmt.Sprintf("%s/ISteamUser/GetFriendList/v0001/?key=%s&steamid=%s&relationship=friend",
-		a.BaseURL,
+		a.ApiBaseUrl,
 		a.ApiKey,
 		userID,
 	)
@@ -30,11 +19,10 @@ func (a SteamApiClient) GetFriendsList(userID string) ([]SteamFriend, error) {
 		fmt.Println(err)
 		return nil, err
 	}
-	defer resp.Body.Close()
 
+	defer resp.Body.Close()
 	var friends playerFriendsListJSON
-	err = json.NewDecoder(resp.Body).Decode(&friends)
-	if err != nil {
+	if err = json.NewDecoder(resp.Body).Decode(&friends); err != nil {
 		fmt.Println(err)
 		return nil, err
 	}
