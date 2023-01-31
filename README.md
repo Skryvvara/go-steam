@@ -18,6 +18,12 @@ Go-Steam is a helper module to make consuming Steam's community API easier and r
 - [x] Get users games
 - [x] Get game details
 
+### Todo
+
+- [x] Tests
+- [x] List package on pkg.go.dev
+- [x] Test/Build Pipeline
+
 ### References
 
 - https://developer.valvesoftware.com/wiki/Steam_Web_API
