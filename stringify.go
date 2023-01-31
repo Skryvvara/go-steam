@@ -1,4 +1,4 @@
-package gosteam
+package steam
 
 import (
 	"fmt"

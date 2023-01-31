@@ -1,19 +1,16 @@
-package gosteam
+package steam
 
-// https://developer.valvesoftware.com/wiki/Steam_Web_API
-/*
- * Author: xDarkyne
- */
-
-type SteamApi struct {
+type SteamApiClient struct {
 	ApiKey  string
 	BaseURL string
 }
 
-func NewSteamApi(apiKey string) SteamApi {
-	a := SteamApi{
+// Returns a new SteamApiClient.
+// To get an API-Key visit https://steamcommunity.com/dev/apikey.
+func NewApiClient(apiKey string) SteamApiClient {
+	apiClient := SteamApiClient{
 		ApiKey:  apiKey,
 		BaseURL: "https://api.steampowered.com",
 	}
-	return a
+	return apiClient
 }

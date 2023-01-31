@@ -1,4 +1,4 @@
-package gosteam
+package steam
 
 import (
 	"encoding/json"
@@ -22,7 +22,7 @@ type gameListResponseJSON struct {
 	}
 }
 
-func (a SteamApi) GetOwnedGames(userID string) ([]SteamGame, error) {
+func (a SteamApiClient) GetOwnedGames(userID string) ([]SteamGame, error) {
 	url := fmt.Sprintf("%s/IPlayerService/GetOwnedGames/v0001/?key=%s&steamid=%s&format=json",
 		a.BaseURL,
 		a.ApiKey,
@@ -86,7 +86,7 @@ type Response struct {
 	Data    GameDetails `json:"data"`
 }
 
-func (a SteamApi) GetGameDetails(gameID string) (*GameDetails, error) {
+func (a SteamApiClient) GetGameDetails(gameID string) (*GameDetails, error) {
 	url := fmt.Sprintf("https://store.steampowered.com/api/appdetails?appids=%s", gameID)
 	resp, err := http.Get(url)
 	if err != nil {

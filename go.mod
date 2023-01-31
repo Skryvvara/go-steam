@@ -1,3 +1,3 @@
-module github.com/xdarkyne/go-steam
+module github.com/skryvvara/go-steam
 
-go 1.18
+go 1.19
