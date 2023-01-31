@@ -25,4 +25,4 @@ jobs:
         run: go test . -v
 
       - name: List package
-        run: GOPROXY=proxy.golang.org go list -m ${{ vars.REGISTRY }}/${{ vars.ACTOR }}/${{ vars.pkg }}@${{ steps.var.outputs.tag }}
+        run: GOPROXY=proxy.golang.org go list -m ${{ vars.REGISTRY }}/${{ vars.ACTOR }}/${{ vars.pkg }}@${{ steps.vars.outputs.tag }}
