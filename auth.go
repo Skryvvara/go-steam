@@ -26,14 +26,14 @@ type OpenId struct {
 	data      url.Values
 }
 
-func NewOpenId(r *http.Request) *OpenId {
+func NewOpenId(r *http.Request, domain string) *OpenId {
 	id := new(OpenId)
 
 	proto := "http://"
 	if r.TLS != nil {
 		proto = "https://"
 	}
-	id.root = proto + r.Host
+	id.root = proto + domain
 
 	uri := r.RequestURI
 	if i := strings.Index(uri, "openid"); i != -1 {
